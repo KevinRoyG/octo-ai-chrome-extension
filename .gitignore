@@ -133,3 +133,8 @@ build/
 # OS generated files
 .AppleDouble
 .LSOverride
+
+# Development scripts - keep these
+!git-push.sh
+!new-feature.sh
+!DEVELOPMENT.md
