@@ -21,7 +21,7 @@ Thank you for your interest in contributing! This project is part of my journey 
 ### Development Setup
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/octopus-ai-chrome-extension.git`
+2. Clone your fork: `git clone https://github.com/KevinRoyG/octo-ai-chrome-extension.git`
 3. Install dependencies: `npm install`
 4. Start development mode: `npm run dev`
 5. Load the extension in Chrome (see README for instructions)
