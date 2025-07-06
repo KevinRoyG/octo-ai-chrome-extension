@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ElevenLabs Text Reader - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎵 ElevenLabs Text Reader Settings</h1>
+      <p>Configure your API key and preferences</p>
+    </header>
+    
+    <main>
+      <section class="api-section">
+        <h2>API Configuration</h2>
+        <div class="form-group">
+          <label for="apiProvider">Select API Provider:</label>
+          <select id="apiProvider">
+            <option value="elevenlabs">ElevenLabs</option>
+            <option value="deepinfra">DeepInfra</option>
+          </select>
+        </div>
+      </section>
+      
+      <section id="elevenlabsSection" class="api-section">
+        <h3>ElevenLabs Settings</h3>
+        <div class="form-group">
+          <label for="elevenlabsApiKey">ElevenLabs API Key:</label>
+          <div class="button-group">
+            <input type="password" id="elevenlabsApiKey" placeholder="Enter your ElevenLabs API key">
+            <button type="button" id="toggleElevenlabsApiKey" class="btn-toggle">Show</button>
+          </div>
+        </div>
+        <div class="help-text">
+          <p>📝 <strong>How to get your API key:</strong></p>
+          <ol>
+            <li>Go to <a href="https://elevenlabs.io" target="_blank">ElevenLabs.io</a></li>
+            <li>Sign up/Login to your account</li>
+            <li>Go to your Profile → API Keys</li>
+            <li>Copy your API key and paste it here</li>
+          </ol>
+        </div>
+      </section>
+      
+      <section id="deepinfraSection" class="api-section" style="display: none;">
+        <h3>DeepInfra Settings</h3>
+        <div class="form-group">
+          <label for="deepinfraApiKey">DeepInfra API Key:</label>
+          <div class="button-group">
+            <input type="password" id="deepinfraApiKey" placeholder="Enter your DeepInfra API key">
+            <button type="button" id="toggleDeepinfraApiKey" class="btn-toggle">Show</button>
+          </div>
+        </div>
+      </section>
+      
+      <section class="preferences-section">
+        <h2>Preferences</h2>
+        <div class="form-group">
+          <label for="voice">Default Voice:</label>
+          <select id="voice">
+            <option value="">Loading voices...</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="speed">Playback Speed:</label>
+          <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+          <span id="speedValue">1.0x</span>
+        </div>
+      </section>
+      
+      <section class="usage-section">
+        <h2>Usage Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" id="charactersUsed">0</span>
+            <span class="stat-label">Characters Used</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="estimatedCost">$0.00</span>
+            <span class="stat-label">Estimated Cost</span>
+          </div>
+        </div>
+        <button id="resetStats" class="btn secondary">Reset Statistics</button>
+      </section>
+    </main>
+    
+    <footer>
+      <button id="saveBtn" class="btn primary">💾 Save Settings</button>
+      <div id="status" class="status-message"></div>
+    </footer>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
