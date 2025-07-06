@@ -229,3 +229,14 @@
 .octo-container.near-right-edge #octo-action-button {
   border-left: 2px solid rgba(168, 85, 247, 0.3);
 }
+
+/* Enhanced bubbles for column layout */
+.octo-container.near-right-edge .octo-action-bubble {
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), 
+              box-shadow 0.3s ease;
+}
+
+.octo-container.near-right-edge .octo-action-bubble:hover {
+  transform: translate(-50%, -50%) translateX(-10px) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(168, 85, 247, 0.25);
+}

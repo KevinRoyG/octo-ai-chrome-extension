@@ -3709,7 +3709,7 @@ function showActionBubbles() {
         
         // Check if button is near right edge to determine bubble placement
         const nearRightEdge = isButtonNearRightEdge();
-        console.log('Octo button near right edge:', nearRightEdge);
+        console.log(`[Octo Bubbles] Layout mode: ${nearRightEdge ? 'COLUMN (left-side)' : 'SEMICIRCLE'} | Bubble count: ${bubbleCount}`);
         
         // Add visual feedback by adjusting container class
         if (nearRightEdge) {
@@ -3754,12 +3754,35 @@ function showActionBubbles() {
             }
             
             // Calculate bubble position based on edge proximity
-            const baseX = radius * Math.cos(angle);
-            const baseY = radius * Math.sin(angle);
+            let x, y;
             
-            // When near right edge, flip the semicircle to the left side
-            const x = nearRightEdge ? -Math.abs(baseX) : baseX;
-            const y = baseY;
+            if (nearRightEdge) {
+                // Vertical column layout for better left-side utilization
+                const leftOffset = -80; // Fixed left offset from center
+                
+                // Calculate spacing based on available screen height and bubble count
+                const buttonRect = octoContainer.getBoundingClientRect();
+                const availableHeight = Math.min(window.innerHeight - 200, 400); // Max height considering margins
+                const maxSpacing = availableHeight / Math.max(bubbleCount - 1, 1);
+                const verticalSpacing = Math.max(45, Math.min(maxSpacing, 75)); // Responsive spacing
+                
+                const totalHeight = (bubbleCount - 1) * verticalSpacing;
+                const startY = -totalHeight / 2; // Center the column vertically
+                
+                x = leftOffset;
+                y = startY + (index * verticalSpacing);
+                
+                console.log(`Bubble ${index}: Column layout - x: ${x}, y: ${y}, spacing: ${verticalSpacing.toFixed(1)}`);
+            } else {
+                // Standard semicircle layout
+                const baseX = radius * Math.cos(angle);
+                const baseY = radius * Math.sin(angle);
+                
+                x = baseX;
+                y = baseY;
+                
+                console.log(`Bubble ${index}: Semicircle layout - x: ${x}, y: ${y}, angle: ${angle}`);
+            }
             
             bubble.onclick = (e) => {
                 e.preventDefault();
