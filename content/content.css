@@ -1,0 +1,226 @@
+/* Styles for content script elements */
+#elevenlabs-floating-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+  }
+  
+  #elevenlabs-floating-btn:hover {
+    background: #0056b3 !important;
+  }
+
+/* Reading Overlay Styles */
+.elevenlabs-reading-overlay {
+  position: fixed;
+  pointer-events: none;
+  z-index: 2147483647;
+  background-color: rgba(128, 128, 128, 0.3);
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 2px;
+  transition: all 0.1s ease-out;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  mix-blend-mode: overlay;
+}
+
+/* Ensure the overlay is visible on any background */
+.elevenlabs-reading-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+  pointer-events: none;
+  border-radius: 1px;
+}
+
+/* Add a subtle animation to make the highlight more noticeable */
+@keyframes highlight-pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.3; }
+}
+
+.elevenlabs-reading-overlay {
+  animation: highlight-pulse 1.5s ease-in-out infinite;
+}
+
+/* Microphone button styles */
+#elevenlabs-micro-button {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  position: fixed;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2147483646;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.2s ease-in-out, background 0.2s;
+  overflow: hidden;
+}
+
+#elevenlabs-micro-button:hover {
+  background: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#elevenlabs-micro-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#elevenlabs-micro-button svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.2s ease;
+}
+
+/* Recording state */
+#elevenlabs-micro-button.recording {
+  background: #111111;
+  border-color: #111111;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+  animation: pulse-recording 2s infinite;
+}
+
+#elevenlabs-micro-button.recording svg {
+  stroke: #ffffff;
+}
+
+/* Animation pour l'état d'enregistrement */
+@keyframes pulse-recording {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes octo-jiggle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+}
+
+.octo-action-button.jiggle {
+  animation: octo-jiggle 0.4s ease-in-out;
+}
+
+#octo-action-button {
+  transition: transform 0.3s ease-in-out;
+}
+
+#octo-action-button.bump {
+  transform: scale(1.1);
+}
+
+.octo-container.gooey-effect {
+  filter: none;
+}
+
+/* --- Octo Button and Bubbles Base Styles --- */
+#octo-action-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  padding: 0;
+}
+
+.octo-action-bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 18px;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+  /* The bubble travel animation is still handled by JS */
+}
+
+#octo-action-button,
+.octo-action-bubble {
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative; 
+  overflow: hidden; 
+  transition: all 0.3s ease;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #111;
+}
+
+#octo-action-button::before,
+.octo-action-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: conic-gradient(
+      from 0deg at 50% 50%,
+      #a855f7 0deg,
+      #d8b4fe 45deg,
+      #ffffff 90deg,
+      #e879f9 135deg,
+      #8b5cf6 180deg,
+      #6366f1 225deg,
+      #c084fc 270deg,
+      #f3e8ff 315deg,
+      #a855f7 360deg
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transform: rotate(0deg) scale(0.9);
+  transition: all 0.5s ease-out;
+}
+
+#octo-action-button > *,
+.octo-action-bubble > * {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+#octo-action-button:hover,
+.octo-action-bubble:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#octo-action-button:hover::before,
+.octo-action-bubble:hover::before {
+  opacity: 0.15;
+  transform: rotate(180deg) scale(1);
+}
+
+#octo-action-button:active,
+.octo-action-bubble:active {
+  transform: translateY(0px);
+  box-shadow: 
+      0 2px 4px rgba(109, 40, 217, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}

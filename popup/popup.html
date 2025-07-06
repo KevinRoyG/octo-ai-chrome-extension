@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Octo AI</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <div class="popup-title">
+        <img src="../assets/icons/icon48.png" alt="Octo AI Logo" class="logo">
+        <span>Octo</span>
+      </div>
+    </header>
+    <nav class="tabs">
+      <button class="tab-link active" data-tab="actions">My actions</button>
+      <button class="tab-link" data-tab="account">My account</button>
+    </nav>
+    <main class="popup-main">
+      <div id="actions" class="tab-content active">
+        <!-- Main actions view -->
+        <div id="actions-view" class="view active">
+          <div id="actions-list" class="cards-container">
+            <!-- Action cards will be rendered here by JS -->
+          </div>
+        </div>
+
+        <!-- Action setup/edit view -->
+        <div id="action-setup-view" class="view">
+          <div class="setup-header">
+              <button id="back-to-actions">←</button>
+              <h2 id="setup-title">Edit Action</h2>
+          </div>
+          <div id="action-editor-form">
+              <!-- Inputs for title, prompt, model etc. -->
+          </div>
+        </div>
+      </div>
+      <div id="account" class="tab-content">
+        <section class="api-key-section">
+          <div class="section-title">DEEPINFRA API KEY</div>
+          <div class="api-key-row" style="display:flex;align-items:center;margin-bottom:12px;">
+            <input type="password" id="api-key" placeholder="Entrez votre clé API DeepInfra" style="width: 100%;">
+          </div>
+        </section>
+        <section class="api-key-section">
+          <div class="section-title">OPENROUTER API KEY</div>
+          <div class="api-key-row" style="display:flex;align-items:center;margin-bottom:12px;">
+            <input type="password" id="openrouter-api-key" placeholder="Entrez votre clé API OpenRouter" style="width: 100%;">
+          </div>
+        </section>
+      </div>
+      <div id="popup-feedback" class="feedback"></div>
+    </main>
+    <footer class="popup-footer">
+      <a href="https://octopus-ai.com/" target="_blank">Octo AI</a>
+    </footer>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
