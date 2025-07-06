@@ -32,7 +32,7 @@ Octopus AI is a Chrome extension that provides seamless access to multiple AI mo
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/octopus-ai-chrome-extension.git
+git clone https://github.com/KevinRoyG/octo-ai-chrome-extension.git
 cd octopus-ai-chrome-extension
 ```
 
@@ -98,9 +98,9 @@ Built with ❤️ by [Your Name] as part of exploring AI-enhanced productivity t
 
 ## 📞 Contact
 
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your Profile](https://linkedin.com/in/YOUR_PROFILE)
-- Email: your.email@example.com
+- GitHub: [@KevinRoyG](https://github.com/KevinRoyG)
+- LinkedIn: [Your Profile](https://linkedin.com/in/kevin-roy-heyraph)
+- Email: kevin.roy@heyraph.com
 
 ---
 
