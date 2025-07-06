@@ -3663,6 +3663,18 @@ function toggleOctoMenu() {
     }
 }
 
+// Detect if Octo button is near the right edge of the screen
+function isButtonNearRightEdge() {
+    if (!octoContainer) return false;
+    
+    const buttonRect = octoContainer.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const distanceFromRightEdge = viewportWidth - buttonRect.right;
+    
+    // Consider "near right edge" if within 150px of the edge
+    return distanceFromRightEdge < 150;
+}
+
 function showActionBubbles() {
     chrome.storage.sync.get(['actionButtonsSettings', 'isMicroButtonVisible', 'isReadButtonVisible'], (result) => {
         let allActions = [];
@@ -3694,6 +3706,17 @@ function showActionBubbles() {
         const bubbleCount = allActions.length;
         const angleStep = Math.PI / (bubbleCount + 1);
         const radius = 75;
+        
+        // Check if button is near right edge to determine bubble placement
+        const nearRightEdge = isButtonNearRightEdge();
+        console.log('Octo button near right edge:', nearRightEdge);
+        
+        // Add visual feedback by adjusting container class
+        if (nearRightEdge) {
+            octoContainer.classList.add('near-right-edge');
+        } else {
+            octoContainer.classList.remove('near-right-edge');
+        }
 
         allActions.forEach((btn, index) => {
             const angle = (index + 1) * angleStep;
@@ -3730,8 +3753,13 @@ function showActionBubbles() {
                 bubble.innerHTML = `<span>${label.charAt(0).toUpperCase()}</span>`;
             }
             
-            const x = radius * Math.cos(angle);
-            const y = radius * Math.sin(angle);
+            // Calculate bubble position based on edge proximity
+            const baseX = radius * Math.cos(angle);
+            const baseY = radius * Math.sin(angle);
+            
+            // When near right edge, flip the semicircle to the left side
+            const x = nearRightEdge ? -Math.abs(baseX) : baseX;
+            const y = baseY;
             
             bubble.onclick = (e) => {
                 e.preventDefault();
