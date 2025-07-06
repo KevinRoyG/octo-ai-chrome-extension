@@ -289,7 +289,6 @@ document.addEventListener('DOMContentLoaded', function() {
             openrouterApiKeyInput.style.borderColor = '#e5e7eb'; // Reset on blur
         });
     }
-
     function debounce(func, delay) {
         let timeout;
         return function(...args) {
@@ -312,7 +311,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (result.openrouterApiKey && openrouterApiKeyInput) {
                 openrouterApiKeyInput.value = result.openrouterApiKey;
             }
-
             renderActionCards();
             showView(actionsView);
         });

@@ -3,7 +3,6 @@ console.log('Speed Reader AI Background script loaded');
 
 // Import API utilities
 importScripts('../utils/api.js');
-
 // Best voices by language
 const BEST_VOICES = {
   'en': 'af_heart',      // American English - Grade A
@@ -242,7 +241,6 @@ async function getOpenRouterApiKey() {
     });
   });
 }
-
 // Handle text-to-speech conversion
 async function handleTextToSpeech(text, tabId) {
   try {
@@ -403,7 +401,6 @@ async function handleGrammarCorrection(text, tabId) {
     if (!corrected) {
       console.warn("[SpeedReader] Pas de texte corrigé trouvé dans la réponse:", data);
     }
-    
     console.log('[SpeedReader] Envoi à tabId', tabId, 'texte:', corrected);
     chrome.tabs.sendMessage(tabId, {
       action: "grammarCorrected",
@@ -431,7 +428,6 @@ async function handleCustomAction(request, tabId) {
     const model = request.model;
     const sidechat = !!request.sidechat;
     const chatId = request.chatId;
-    
     // If messages array is present, use it for conversation context
     const messages = Array.isArray(request.messages) && request.messages.length > 0
       ? request.messages
@@ -448,7 +444,6 @@ async function handleCustomAction(request, tabId) {
     if (!resultText) {
       console.warn("[SpeedReader] No result text found in response:", data);
     }
-    
     console.log('[SpeedReader] Sending to tabId', tabId, 'text:', resultText);
     chrome.tabs.sendMessage(tabId, {
       action: "grammarCorrected",
