@@ -11,8 +11,9 @@ The Octo button now intelligently positions action bubbles based on the button's
 
 ### **Smart Positioning (Button Near Right Edge)**
 - When button is within **150px** of the right screen edge
-- Action bubbles flip to appear on the **left side** of the button  
-- Uses flipped positioning: `x = -Math.abs(radius * cos(angle))`
+- Action bubbles use **vertical column layout** on the left side
+- **No overlapping**: Bubbles stack vertically with optimal spacing
+- **Responsive spacing**: Adapts to bubble count and screen height
 
 ## Visual Indicators
 
@@ -34,7 +35,9 @@ The Octo button now intelligently positions action bubbles based on the button's
 
 ### **Key Functions**
 - `isButtonNearRightEdge()` - Detects proximity to screen edge
-- `showActionBubbles()` - Modified to use smart positioning
+- `showActionBubbles()` - Uses smart layout selection
+- **Column Layout**: Vertical positioning with dynamic spacing
+- **Responsive Spacing**: `Math.max(45, Math.min(maxSpacing, 75))`
 - Edge detection threshold: **150px** from right edge
 
 ### **Browser Compatibility**
@@ -50,7 +53,8 @@ The Octo button now intelligently positions action bubbles based on the button's
    - No purple border on button
 
 2. **Near Edge Position**: Resize browser window so Octo button is <150px from right edge
-   - Bubbles appear on the left side  
+   - Bubbles appear in **vertical column** on the left side
+   - **No overlapping** between bubbles
    - Purple left border appears on button
 
 3. **Dynamic Testing**: Drag the Octo button near the right edge
